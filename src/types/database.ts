@@ -9,6 +9,43 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      comments: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          tweet_id: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          tweet_id: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          tweet_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'comments_tweet_id_fkey'
+            columns: ['tweet_id']
+            referencedRelation: 'tweets'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'comments_user_id_fkey'
+            columns: ['user_id']
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          }
+        ]
+      }
       tweets: {
         Row: {
           contenido: string
@@ -41,23 +78,29 @@ export interface Database {
         Row: {
           avatar_url: string
           created_at: string
+          description: string | null
           id: string
           name: string
           user_name: string
+          website: string | null
         }
         Insert: {
           avatar_url: string
           created_at?: string
+          description?: string | null
           id: string
           name: string
           user_name: string
+          website?: string | null
         }
         Update: {
           avatar_url?: string
           created_at?: string
+          description?: string | null
           id?: string
           name?: string
           user_name?: string
+          website?: string | null
         }
         Relationships: [
           {
