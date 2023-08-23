@@ -39,7 +39,7 @@ export default function CreatePostClient ({ userName, userAvatar, userId }: Prop
       <article className='flex gap-2'>
         <Avatar>
           <AvatarImage src={userAvatar} alt={userName} />
-          <AvatarFallback>{userName[0]}</AvatarFallback>
+          <AvatarFallback>{userName !== undefined ? userName[0] : ''}</AvatarFallback>
         </Avatar>
         <Textarea
           placeholder="¡¿Que está pasando?!"

@@ -16,8 +16,8 @@ export default async function Home () {
   return (
     <main className="flex min-h-screen flex-col justify-between items-center">
       <section className='flex w-[600px] justify-between items-center pt-4'>
-        <article className='flex gap-x-4 items-center'>
-          Hola blue bird 👋
+        <article className='flex gap-x-4 items-center font-bold'>
+          Blue bird 👋
           <ModeToggle />
         </article>
         <AuthButtonServer />

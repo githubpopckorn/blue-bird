@@ -18,7 +18,7 @@ export default function UserProfileForm ({ user }: Props) {
   const supabase = createClientComponentClient()
   const router = useRouter()
   const { toast } = useToast()
-  const [username] = useState(user?.user_name)
+  const [username, setUsername] = useState(user?.user_name)
   const [name, setName] = useState(user?.name)
   const [description, setDescription] = useState(user?.description)
   const [website, setWebsite] = useState(user?.website)
@@ -33,7 +33,8 @@ export default function UserProfileForm ({ user }: Props) {
       .update({
         name,
         description,
-        website
+        website,
+        user_name: username
       })
       .eq('id', user?.id)
       .select()
@@ -59,9 +60,9 @@ export default function UserProfileForm ({ user }: Props) {
       <article>
         <Label htmlFor='username'>Username</Label>
         <Input
-          disabled
           id='username'
           value={username}
+          onChange={(e) => { setUsername(e.target.value) }}
         />
       </article>
       <article>
